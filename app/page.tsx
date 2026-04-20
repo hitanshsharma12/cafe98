@@ -7,33 +7,33 @@ import Events from "./components/Events";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 
+
 export default function Home() {
   return (
-    <>
-      <Loader />
+    
+    <main className="overflow-x-hidden">
+       <Loader />
+      {/* 🔝 Navigation */}
+      <Navbar />
 
-      <main className="overflow-x-hidden">
-        {/* 🔝 Navigation */}
-        <Navbar />
+      {/* 🎥 Hero */}
+      <Hero />
 
-        {/* 🎥 Hero */}
-        <Hero />
+      {/* 🍽️ Menu */}
+      <Menu />
 
-        {/* 🍽️ Menu */}
-        <Menu />
+      {/* 🛏️ Rooms */}
+      <Rooms />
 
-        {/* 🛏️ Rooms */}
-        <Rooms />
+      {/* 🍻 Bar */}
+      <Bar />
 
-        {/* 🍻 Bar */}
-        <Bar />
+      {/* 🎉 Events */}
+      <Events />
 
-        {/* 🎉 Events */}
-        <Events />
+      {/* 📍 Footer */}
+      <Footer />
 
-        {/* 📍 Footer */}
-        <Footer />
-      </main>
-    </>
+    </main>
   );
 }
