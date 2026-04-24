@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display, Cinzel } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -18,6 +18,14 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+// 🔥 Added Cinzel for the elegant headings
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"], // Added bolder weights for impact
   display: "swap",
 });
 
@@ -46,14 +54,13 @@ export default function RootLayout({
         ${geistSans.variable} 
         ${geistMono.variable} 
         ${playfair.variable} 
+        ${cinzel.variable} 
         h-full scroll-smooth
       `}
     >
       <body className="min-h-full bg-black text-white flex flex-col font-[var(--font-geist-sans)]">
-
         {/* 🔥 Main Content */}
         <main className="flex-1">{children}</main>
-
       </body>
     </html>
   );
