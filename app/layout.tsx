@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import Image from "next/image";
+import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,6 +11,13 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -36,35 +42,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth`}
+      className={`
+        ${geistSans.variable} 
+        ${geistMono.variable} 
+        ${playfair.variable} 
+        h-full scroll-smooth
+      `}
     >
-      <body className="min-h-full bg-black text-white flex flex-col">
+      <body className="min-h-full bg-black text-white flex flex-col font-[var(--font-geist-sans)]">
 
         {/* 🔥 Main Content */}
         <main className="flex-1">{children}</main>
-
-        {/* ✅ WhatsApp Floating Logo (Premium) */}
-        <a
-          href="https://wa.me/917018796714?text=Hi%20I%20want%20to%20book%20at%20Cafe%2098"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="fixed bottom-5 right-5 z-50 group"
-        >
-          <div className="relative">
-            
-            <Image
-              src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-              alt="WhatsApp"
-              width={55}
-              height={55}
-              priority
-              className="drop-shadow-xl transition-transform duration-300 group-hover:scale-110"
-            />
-
-            {/* 🟢 Pulse Animation */}
-           
-          </div>
-        </a>
 
       </body>
     </html>
