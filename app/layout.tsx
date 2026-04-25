@@ -58,7 +58,7 @@ export default function RootLayout({
         h-full scroll-smooth
       `}
     >
-      <body className="min-h-full bg-black text-white flex flex-col font-[var(--font-geist-sans)]">
+      <body className="min-h-full bg-black text-white flex flex-col font-(--font-geist-sans)">
         {/* 🔥 Main Content */}
         <main className="flex-1">{children}</main>
       </body>

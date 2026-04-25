@@ -7,33 +7,24 @@ import Events from "./components/Events";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 
-
 export default function Home() {
   return (
-    
     <main className="overflow-x-hidden">
-       <Loader />
+      <Loader />
       {/* 🔝 Navigation */}
       <Navbar />
-
       {/* 🎥 Hero */}
       <Hero />
-
       {/* 🍽️ Menu */}
       <Menu />
-
       {/* 🛏️ Rooms */}
       <Rooms />
-
       {/* 🍻 Bar */}
       <Bar />
-
       {/* 🎉 Events */}
       <Events />
-
       {/* 📍 Footer */}
       <Footer />
-
     </main>
   );
 }
