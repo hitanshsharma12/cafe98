@@ -10,7 +10,6 @@ export async function POST(req: Request) {
     orderCount = 0;
     lastDate = today;
   }
-
   orderCount++;
 
   const orderTime = new Date().toLocaleString("en-IN", {
@@ -33,19 +32,16 @@ export async function POST(req: Request) {
 
 👤 Name: ${name}
 📞 Phone: ${phone}
-👥 People: ${people}
+👥 People: ${people || "—"}
 
 🍽 Items:
 ${itemsText}
 
-⏱ Pickup: ${time} min
+⏱ Pickup: ${time ? time + " min" : "—"}
 
 💰 Total: ₹${total}
 `.trim();
 
-  const whatsappNumber = "917018796714";
-
-  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
+  const url = `https://wa.me/917018796714?text=${encodeURIComponent(message)}`;
   return Response.json({ url });
 }

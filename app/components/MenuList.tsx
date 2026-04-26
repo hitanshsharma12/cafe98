@@ -19,7 +19,6 @@ const data: Item[] = [
   { name: "Chicken Hot N Sour", price: "₹130", category: "Soups" },
   { name: "Chicken Lemon Coriander", price: "₹140", category: "Soups" },
   { name: "Chicken Manchow Soup", price: "₹140", category: "Soups" },
-
   // 🥤 BEVERAGES
   { name: "Aeration Drinks", price: "₹40", category: "Beverages" },
   { name: "Lemon Soda", price: "₹60", category: "Beverages" },
@@ -40,7 +39,6 @@ const data: Item[] = [
   { name: "Hot Coffee", price: "₹50", category: "Beverages" },
   { name: "Hot Chocolate", price: "₹140", category: "Beverages" },
   { name: "Hot Chocolate Float", price: "₹160", category: "Beverages" },
-
   // 🍔 CONTINENTAL
   { name: "Veg Burger", price: "₹70", category: "Continental" },
   { name: "Veg Cheese Burger", price: "₹110", category: "Continental" },
@@ -56,7 +54,6 @@ const data: Item[] = [
   { name: "Chicken Cheese Burger", price: "₹150", category: "Continental" },
   { name: "Chicken Grill Sandwich", price: "₹130", category: "Continental" },
   { name: "Chicken Pasta", price: "₹280", category: "Continental" },
-
   // 🍕 PIZZAS
   { name: "Margarita Pizza", price: "₹200/330", category: "Pizzas" },
   { name: "Veg Heaven (Onion/Capsicum/Paneer)", price: "₹230/350", category: "Pizzas" },
@@ -65,7 +62,6 @@ const data: Item[] = [
   { name: "Chicken Pizza", price: "₹290/390", category: "Pizzas" },
   { name: "Tandoori Chicken Pizza", price: "₹300/450", category: "Pizzas" },
   { name: "Farm House Pizza 98 Special", price: "₹520", category: "Pizzas" },
-
   // 🔥 TANDOORI SNACKS
   { name: "Mushroom Tikka", price: "₹180", category: "Tandoori Snacks" },
   { name: "Soya Malai Chaap", price: "₹220", category: "Tandoori Snacks" },
@@ -81,7 +77,6 @@ const data: Item[] = [
   { name: "Seekh Kebab (4)", price: "₹350", category: "Tandoori Snacks" },
   { name: "Mutton Seekh Kebab (4)", price: "₹350", category: "Tandoori Snacks" },
   { name: "Tandoori Platter Non-veg", price: "₹899", category: "Tandoori Snacks" },
-
   // 🍳 BREAKFAST
   { name: "Aloo Prantha", price: "₹60", category: "Breakfast" },
   { name: "Gobhi Prantha", price: "₹60", category: "Breakfast" },
@@ -104,7 +99,6 @@ const data: Item[] = [
   { name: "Omelette Prantha", price: "₹70", category: "Breakfast" },
   { name: "Raita", price: "₹90", category: "Breakfast" },
   { name: "Roasted Pappad", price: "₹20", category: "Breakfast" },
-
   // 🍛 MAIN COURSE NON VEG
   { name: "Egg Curry (4 Eggs)", price: "₹280/550", category: "Main Course Non Veg" },
   { name: "Butter Chicken", price: "₹280/550", category: "Main Course Non Veg" },
@@ -119,7 +113,6 @@ const data: Item[] = [
   { name: "Mutton Masala", price: "₹330/600", category: "Main Course Non Veg" },
   { name: "Mutton Rogan Josh", price: "₹350/600", category: "Main Course Non Veg" },
   { name: "Mutton Rahra", price: "₹350/600", category: "Main Course Non Veg" },
-
   // 🍚 RICE & BIRYANI
   { name: "Plain Rice", price: "₹70/120", category: "Rice & Biryani" },
   { name: "Jeera Rice", price: "₹130", category: "Rice & Biryani" },
@@ -128,7 +121,6 @@ const data: Item[] = [
   { name: "Egg Biryani", price: "₹190", category: "Rice & Biryani" },
   { name: "Chicken Biryani", price: "₹220", category: "Rice & Biryani" },
   { name: "Mutton Biryani", price: "₹290", category: "Rice & Biryani" },
-
   // 🥖 BREADS
   { name: "Plain Roti", price: "₹14", category: "Breads" },
   { name: "Butter Roti", price: "₹18", category: "Breads" },
@@ -160,32 +152,68 @@ export default function MenuList({ category, setCart, setOpen }: Props) {
     setTimeout(() => setOpen(true), 100);
   };
 
+  const hasDualPrice = (price: string) => price.includes("/");
+
   return (
-    <section className="py-10 px-4 md:px-6 relative z-10">
-      <div className="max-w-3xl mx-auto space-y-4">
+    <section className="py-4 px-4 md:px-8 pb-32">
+      <div className="max-w-2xl mx-auto space-y-2">
         {filtered.map((item, i) => (
           <div
             key={i}
-            className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 p-4 rounded-xl bg-white/10 border border-white/10 backdrop-blur-md hover:scale-[1.02] transition"
+            className="group relative flex items-center justify-between gap-4 px-5 py-4 rounded-xl border transition-all duration-300"
+            style={{
+              background: "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(200,169,106,0.03) 100%)",
+              borderColor: "rgba(200,169,106,0.1)",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,169,106,0.35)";
+              (e.currentTarget as HTMLElement).style.background =
+                "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(200,169,106,0.07) 100%)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,169,106,0.1)";
+              (e.currentTarget as HTMLElement).style.background =
+                "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(200,169,106,0.03) 100%)";
+            }}
           >
-            <div>
-              <h3 className="text-white font-semibold text-base md:text-lg">
+            {/* Left — name */}
+            <div className="flex-1 min-w-0">
+              <h3 className="text-white text-sm md:text-base font-medium leading-snug truncate pr-2">
                 {item.name}
               </h3>
+              {hasDualPrice(item.price) && (
+                <p className="text-[10px] text-gray-600 mt-0.5 tracking-widest uppercase">
+                  Half / Full
+                </p>
+              )}
             </div>
-            <div className="flex justify-between items-center sm:gap-4">
-              <span className="text-yellow-400 font-bold text-sm md:text-base">
+
+            {/* Right — price + add */}
+            <div className="flex items-center gap-4 flex-shrink-0">
+              <span className="text-[var(--gold)] font-bold text-sm md:text-base tabular-nums">
                 {item.price}
               </span>
               <button
                 onClick={() => handleAdd(item)}
-                className="bg-yellow-400 text-black px-4 py-2 rounded-full text-xs md:text-sm hover:scale-110 active:scale-95 transition"
+                className="relative w-8 h-8 rounded-full border border-[var(--gold)]/60 flex items-center justify-center text-[var(--gold)] hover:bg-[var(--gold)] hover:text-black active:scale-90 transition-all duration-200 text-lg leading-none"
+                aria-label={`Add ${item.name}`}
               >
-                Add
+                +
               </button>
             </div>
+
+            {/* Subtle left accent line on hover */}
+            <div
+              className="absolute left-0 top-2 bottom-2 w-[2px] rounded-full bg-[var(--gold)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            />
           </div>
         ))}
+
+        {filtered.length === 0 && (
+          <div className="text-center py-20 text-gray-600">
+            <p className="font-cinzel text-lg">Nothing here yet</p>
+          </div>
+        )}
       </div>
     </section>
   );
