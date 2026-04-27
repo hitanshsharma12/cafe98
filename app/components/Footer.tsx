@@ -143,7 +143,7 @@ export default function Footer() {
             © {year} Café 98. All Rights Reserved.
           </p>
           <p className="text-gray-700 text-xs">
-            Crafted with ♥ in Himachal Pradesh
+            Crafted by ♥ Hitansh Sharma 
           </p>
         </div>
       </div>
